@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta http-equiv="refresh" content="10">  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="finalstyle.css">
+     <script src="./index.js" defer></script>
+     <link href="https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap" rel="stylesheet">
+   
+    <title>weather</title>
+    <style>
+        *{
+    box-sizing: border-box;
+}
+body{
+    
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    background: rgb(3, 3, 58);
+}
+.box{
+    position: relative;
+    top:18%;
+    border-radius: 10px;
+    /* border: 2px solid black; */
+    height:460px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #a5bbdd; 
+    box-shadow: -2px 5px 10px ;
+    align-self: center;
+    justify-self: center;
+
+}
+.weatherecon{
+  
+    height: 30%;    
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    position: relative;
+}
+.weatherecon h6{
+    /* line-height: 5px; */
+    margin: 0px;
+    margin-top: 1px;
+    font-weight: 400;
+}
+#icon1{
+    
+    margin: 0px;
+    /* margin-bottom: 5px; */
+    padding: 0px;
+    font-size: 6rem;
+    animation: fas-anime 3s linear infinite alternate;
+}
+@keyframes fas-anime {
+    from{
+        transform: scale(0.9);
+    }
+    to{
+        transform: scale(1.05);
+    }
+    
+}
+.form-div input{
+    /* text-align: center; */
+    padding:0.2rem 0.5rem;
+}
+@media only screen and (max-width:550px){
+    .box{
+        display: block;
+    box-sizing: border-box;
+    top: 20%;
+    /* height: 60%; */
+    width: 70%;
+    
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="heading">
+        <nav class="navbar">
+          <ul>
+    
+            <li><a href="https://project-app-by-shivam.herokuapp.com/">Home</a></li>
+        <li><a href="https://project-app-by-shivam.herokuapp.com/weather">Weather</a></li>
+        <li><a href="https://project-app-by-shivam.herokuapp.com/calculator">Calculator</a></li>
+
+        <li><a href="https://project-app-by-shivam.herokuapp.com/registration">Register</a></li>
+          </ul>
+        </nav>
+        <div class="navmenu">
+          <ion-icon name="menu-outline"  class="icons" id="icon-bar"></ion-icon>
+          <ion-icon name="close-outline" class="icons"  id="icon-close"></ion-icon>
+        </div>
+      </header>
+    <div class="box">
+        <div class="wave1"></div>
+        <div class="wave2"></div>
+        <div class="wave3"></div>
+        <div class="weatherecon"><i id="icon1" class="fas fa-sun"style="color:rgb(255,212,59);"></i>
+            
+        </div>
+        <div class="info">
+            <h2 class="loc-info"><i class="fa-solid fa-street-view" style="color:black;"></i> {%city%},{%country%}</h2>
+            <p id="date">WED|SEP 29|10:59 AM</p>
+            <h1 id="temp">{%temp%}°C</h1>
+            <p id="tempmax_min">Min {%tempmin%}°C| Max {%tempmax%}°C</p>
+        </div>
+        <div class="form-div">
+            <form action="/weather" method="post">
+                <input type="text" name="city" placeholder="Enter City Name" autocomplete="off">
+            </form>
+        </div>
+    </div>
+<script>
+    const curDate=document.querySelector("#date");
+let weathercon=document.querySelector(".weatherecon");
+const temp=document.querySelector("#temp");
+
+const tempStatus="{%tempcond%}";
+console.log(tempStatus)
+function weather(){
+    if(tempStatus==="Rain"){
+        return "<i id='icon1' class='fa-solid fa-cloud-rain' style='color:white'></i> "
+    }
+    else if(tempStatus==="Sunny"){
+        return "<i id='icon1' class='fas fa-sun'style='color:rgb(255,212,59)'></i>"
+    }
+    else if(tempStatus==="Clouds"){
+        return "<i id='icon1' class='fa-solid fa-cloud'style='color:white'></i>"
+    }
+    else if(tempStatus==="Mist"){
+        return "<i id='icon1' class='fa-solid fa-smog'style='color:white'></i>"
+    }
+    else if(tempStatus==="Haze"){
+        return "<i id='icon1' class='fa-solid fa-smog'style='color:white'></i>"
+    }
+    else if(tempStatus==="Thunderstorm"){
+        return "<i class='fa-solid fa-cloud-showers-heavy'style='color:white'></i>"
+    }
+    else{
+        return "<i class=' fa-regular fa-sun-bright'style='color:white'></i>"
+    }
+}
+// <i class="fa-solid fa-cloud-bolt"></i>
+weathercon.innerHTML=weather()+`<h6>${tempStatus}</h6>`;
+const getCurrentDay=()=>{
+    let currentTime=new Date();
+    var weekday=new Array(7);
+    weekday[0]="SUN";
+    weekday[1]="MON";
+    weekday[2]="TUE"
+    weekday[3]="WED";
+    weekday[4]="THUR";
+    weekday[5]="FRI";
+    weekday[6]="SAT";
+    const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
+    let hour=currentTime.getHours();
+    let min=currentTime.getMinutes();
+    console.log(hour);
+    console.log(min);
+    let am_pm="AM";
+    if(hour>=12&&hour<=23)
+    {
+        hour=hour-12;
+        am_pm="PM"
+    }
+    if(min<10){
+        min="0"+min;
+    }
+    return `${weekday[currentTime.getDay()]}|${month[currentTime.getMonth()]} ${currentTime.getDate()}|${hour}:${min} ${am_pm}`};
+
+curDate.textContent=getCurrentDay();
+
+</script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+    const navmenu=document.querySelector(".navmenu");
+    navmenu.addEventListener("click",()=>{
+      const header=document.querySelector(".heading");
+      header.classList.toggle("active");
+    })
+  </script>
+</body>
+</html>

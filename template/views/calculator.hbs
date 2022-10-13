@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cal1.css">
+    <link rel="stylesheet" href="finalstyle.css">
+    <script src="../../public/index.js" defer></script>
+    <script src="cal.js" defer></script>
+    <title>calculator</title>
+    
+</head>
+<body>
+     <header class="heading">
+    <nav class="navbar">
+      <ul>
+
+        <li><a href="https://project-app-by-shivam.herokuapp.com/">Home</a></li>
+        <li><a href="https://project-app-by-shivam.herokuapp.com/weather">Weather</a></li>
+        <li><a href="https://project-app-by-shivam.herokuapp.com/calculator">Calculator</a></li>
+
+        <li><a href="https://project-app-by-shivam.herokuapp.com/registration">Register</a></li>
+      </ul>
+    </nav>
+    <div class="navmenu">
+      <ion-icon name="menu-outline"  class="icons" id="icon-bar"></ion-icon>
+      <ion-icon name="close-outline" class="icons"  id="icon-close"></ion-icon>
+    </div>
+  </header>
+
+    <div class="container">
+        <input type="text" class="ip">
+        <div class="row">
+            <button class="btn orgbg">C</button>
+            <button class="btn orgbg">(</button>
+            <button class="btn orgbg">)</button>
+            <button class="btn orgbg">/</button>
+        </div>
+        <div class="row">
+            <button class="btn">7</button>
+            <button class="btn">8</button>
+            <button class="btn">9</button>
+            <button class="btn orgbg">*</button>
+        </div>
+        <div class="row">
+            <button class="btn">4</button>
+            <button class="btn">5</button>
+            <button class="btn">6</button>
+            <button class="btn orgbg">-</button>
+        </div>
+        <div class="row">
+            <button class="btn">1</button>
+            <button class="btn">2</button>
+            <button class="btn">3</button>
+            <button class="btn orgbg">+</button>
+        </div>
+        <div class="row">
+            <button class="btn">00</button>
+            <button class="btn">0</button>
+            <button class="btn">.</button>
+            <button class="btn orgbg">=</button>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+     <script>
+    const navmenu=document.querySelector(".navmenu");
+    navmenu.addEventListener("click",()=>{
+      const header=document.querySelector(".heading");
+      header.classList.toggle("active");
+    })
+  </script>
+</body>
+</html>

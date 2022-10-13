@@ -1,0 +1,147 @@
+/* body{
+    height: 100vh;
+    width: 100vw;
+    background: rgb(2, 2, 85);
+} */
+.heading {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    box-sizing: inherit;
+    width: 100vw;
+    height: 5rem;
+    background: rgb(2, 2, 85);
+
+
+}
+.navbar {
+    height: 100%;
+    width: 100%;
+    background: rgb(2, 2, 85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar ul {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.navbar ul li {
+    list-style: none;
+}
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    border: 2px solid white;
+    padding: 0.3rem 0.7rem;
+    border-radius: 2rem;
+    font-size: 1.3rem;
+}
+.navbar ul li a:hover {
+    color: rgb(2, 2, 85);
+    background: white;
+    font-weight: bold;
+}
+.navmenu {
+    padding: 0px;
+    /* border:2px solid yellow; */
+    color: white;
+    display: flex;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    height: 53%;
+
+}
+.icons {
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    margin: 2px;
+    padding: 0px;
+    height: 90%;
+    width: 38%;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+#icon-close {
+    display: none;
+}
+
+@media only screen and (max-width:550px) {
+    html {
+        overflow-x: hidden;
+
+    }
+    body {
+        overflow-x: hidden;
+    }
+    .heading {
+        height: 5rem;
+
+        width: 100vw;
+        position: absolute;
+        top:0;
+        left:0;
+        right: 0;
+        z-index: 999;
+        display: flex;
+        justify-content: center;
+        flex-direction: column-reverse;
+        align-items: center;
+
+    }
+    .navmenu {
+        position: relative;
+        /* top:5%; */
+
+        align-self: flex-end;
+        display: flex;
+        width: 30%;
+        height: 60%;
+        z-index: 999;
+    }
+    .navbar {
+        background: #011533;
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 100%;
+
+
+        transform: translateY(-100%);
+        transition: all 0.3s linear;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+    .navbar ul {
+        /* border:2px solid white; */
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar ul li {
+        margin: 0px;
+    }
+    .navbar ul li a {
+        margin: 0;
+        border: none;
+    }
+    .active .navbar {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+}
